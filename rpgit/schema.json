@@ -1,0 +1,367 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "id": "https://github.com/Fork-n-Play/rpgit/blob/master/schema/settings_schema.json",
+  "title": "Settings",
+  "description": "Json settings for RPGit",
+  "type": "object",
+  "properties": {
+    "system": { "$ref": "#/definitions/system" },
+    "character": { "$ref": "#/definitions/character" }
+  },
+  "required": [ "system", "character" ],
+
+  "definitions": {
+
+    "system": {
+      "type": "object",
+      "title": "System settings",
+      "description": "Means by which in-game events are determined to occur.",
+      "properties": {
+        "units": { "$ref": "#/definitions/units" },
+        "rolls": { "$ref": "#/definitions/rolls" }
+      },
+      "required": [
+        "units",
+        "rolls"
+      ]
+    },
+
+    "units": {
+      "type": "array",
+      "title": "Units",
+      "format": "tabs",
+      "description": "Units of measurement",
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "title": "Physical quantity",
+        "headerTemplate": "> {{self.title}}, {{self.quantity}}",
+        "options": {
+          "collapsed": true
+        },
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "quantity": {
+            "type": "string",
+            "enum": [
+              "length",
+              "weight",
+              "temperature",
+              "time"
+            ],
+            "required": [
+              "length",
+              "weight",
+              "temperature",
+              "time"
+            ]
+          },
+          "formula": {
+            "description": "Formula or multiplier respect SI base units (m, kg, s, A, K, mol, cd)",
+            "oneOf": [
+              { "type": "string" },
+              { "type": "number" }
+            ]
+          }
+        }
+      }
+    },
+
+    "rolls": {
+      "type": "array",
+      "title": "Rolls",
+      "description": "Base dice rolls",
+      "format": "tabs",
+      "items": {
+        "$ref": "#/definitions/roll"
+      }
+    },
+
+    "roll": {
+      "type": "object",
+      "headerTemplate": "> {{self.title}}",
+      "options": {
+        "collapsed": true
+      },
+      "properties": {
+        "title": {
+          "type": "string",
+          "title": "Title",
+          "description": "Description of the roll",
+          "default": "New roll"
+        },
+        "dices": {
+          "type": "integer",
+          "title": "Dices",
+          "description": "Number of dices in a roll",
+          "minimum": 1,
+          "default": 1
+        },
+        "sides": {
+          "type": "array",
+          "format": "tabs",
+          "title": "Sides",
+          "description": "Sides of each dice (symbol, value)",
+          "minItems": 1,
+          "uniqueItems": true,
+          "options": {
+            "collapsed": true
+          },
+          "items": {
+            "type": "object",
+            "headerTemplate": "> {{self.symbol}}, {{self.value}}",
+            "options": {
+              "collapsed": true
+            },
+            "properties": {
+              "symbol": {
+                "type": "string"
+              },
+              "value": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "symbol",
+              "value"
+            ]
+          }
+        }
+      },
+      "required": [
+        "dices",
+        "sides"
+      ]
+    },
+
+    "system_rolls": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "template": "roll",
+          "watch": {
+            "system_roll": "system.rolls"
+          },
+          "options": {
+            "hidden": true
+          }
+        },
+        "value": {
+          "type": "string",
+          "title": "Roll",
+          "watch": {
+            "system_roll": "system.rolls"
+          },
+          "enumSource": [{
+            "source": "system_roll",
+            "value": "{{item.title}}"
+          }]
+        }
+      }
+    },
+
+    "system_gauges": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "template": "gauge",
+          "watch": {
+            "system_gauge": "system.gauges"
+          },
+          "options": {
+            "hidden": true
+          }
+        },
+        "value": {
+          "type": "string",
+          "title": "System gauge",
+          "watch": {
+            "system_gauge": "system.gauges"
+          },
+          "enumSource": [{
+            "source": "system_gauge",
+            "value": "{{item.title}}"
+          }]
+        }
+      }
+    },
+
+    "character_gauges": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "template": "gauge",
+          "watch": {
+            "character_gauge": "character.gauges"
+          },
+          "options": {
+            "hidden": true
+          }
+        },
+        "value": {
+          "type": "string",
+          "title": "Character gauge",
+          "watch": {
+            "character_gauge": "character.gauges"
+          },
+          "enumSource": [{
+            "source": "character_gauge",
+            "value": "{{item.title}}"
+          }]
+        }
+      }
+    },
+
+    "range": {
+      "type": "object",
+      "description": "Maximum and minimum values of the range",
+      "properties": {
+        "maximum": {
+          "type": "number",
+          "description": "value must be less than or equal"
+        },
+        "minimum": {
+          "type": "number",
+          "description": "value must be greater than or equal"
+        }
+      },
+      "maxProperties": 2,
+      "minProperties": 1
+    },
+
+    "cost": {
+      "type": "object",
+      "title": "Title",
+      "description": "Cost is: value - initial * increment",
+      "properties": {
+        "initial": {
+          "type": "number",
+          "description": "initial value with null cost"
+        },
+        "costs": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "increment": {
+                "type": "number",
+                "description": "cost increment for every unitary increase in this range"
+              },
+              "range": {
+                "$ref": "#/definitions/range",
+                "description": ""
+              }
+            }
+          }
+        }
+      },
+      "required": [
+        "base",
+        "increment",
+        "range"
+      ],
+      "default": {
+        "base": 10,
+        "increment": 10,
+        "range": {
+          "maximum": 13,
+          "minimum": 9
+        }
+      }
+    },
+
+    "character": {
+      "type": "object",
+      "title": "Character",
+      "description": "Procedural components of the imaginary entity called character",
+      "properties": {
+        "race": {
+          "type": "string",
+          "enum": [
+            "human"
+          ]
+        },
+        "gauges": {
+          "$ref": "#/definitions/gauges"
+        }
+      },
+      "required": [
+        "race",
+        "gauges"
+      ]
+    },
+
+    "gauges": {
+      "type": "array",
+      "title": "Gauges",
+      "description": "Gauge list [title (type)]",
+      "format": "tabs",
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/definitions/gauge"
+      }
+    },
+
+    "gauge": {
+      "type": "object",
+      "id": "gauge",
+      "headerTemplate": "> {{self.title}}",
+      "options": {
+        "collapsed": false
+      },
+      "properties": {
+        "title": {
+          "type": "string",
+          "title": "Title",
+          "description": "Title of the gauge",
+          "default": "New gauge"
+        },
+        "description": {
+          "type": "string",
+          "title": "Description",
+          "description": "Description of the gauge"
+        },
+        "initial": {
+          "type": "array",
+          "format": "tabs",
+          "title": "Initial value",
+          "description": "Steps for initial value determination",
+          "items": {
+            "headerTemplate": "Step {{i}}: {{self.value}} ({{self.type}})",
+            "oneOf": [
+              {
+                "$ref": "#/definitions/system_rolls",
+                "title": "Roll"
+              },
+              {
+                "$ref": "#/definitions/cost",
+                "title": "Resource"
+              },
+              {
+                "$ref": "#/definitions/system_gauges",
+                "title": "System gauge"
+              },
+              {
+                "$ref": "#/definitions/character_gauges",
+                "title": "Character gauge"
+              }
+            ]
+          }
+        }
+      },
+      "required": [
+        "type",
+        "title",
+        "description",
+        "initial"
+      ]
+    }
+
+  }
+
+}

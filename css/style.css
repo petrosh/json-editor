@@ -1,0 +1,12 @@
+.tabs {
+  float: left;
+  width: 130px;
+  width: auto;
+}
+.tabs > div > span {
+  cursor: pointer;
+}
+.content {
+  margin-left: 130px;
+  margin-left: 250px;
+}

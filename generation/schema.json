@@ -1,0 +1,52 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "title": "Generation",
+  "description": "Character generation for RPGit",
+  "type": "object",
+  "properties": {
+    "array": {
+      "type": "string",
+      "enum": [
+        "a",
+        "b"
+      ]
+    },
+    "sequence": {
+      "type": "array",
+      "format": "tabs",
+      "items": {
+        "type": "object",
+        "headerTemplate": "Step {{i}}:",
+        "properties": {
+          "attributes": {
+            "type": "array",
+            "format": "tabs",
+            "items": {
+              "headerTemplate": "{{self.title}}",
+              "$ref": "#/definitions/gauge"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "gague": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string",
+          "enum": [
+            "9 > -10",
+            "10 > 0",
+            "11 > 10",
+            "12 > 25"
+          ]
+        }
+      }
+    }
+  }
+}

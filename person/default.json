@@ -1,0 +1,32 @@
+{
+  "name": "John Smith",
+  "birth": "1971-02-01",
+  "age": 35,
+  "gender": "male",
+  "location": {
+    "city": "San Francisco",
+    "state": "California",
+    "citystate": "",
+    "coglions": 21,
+    "cool": true
+  },
+  "pets": [
+    {
+      "name": "Spot",
+      "type": "dog",
+      "fixed": true
+    },
+    {
+      "name": "Whiskers",
+      "type": "cat",
+      "fixed": false
+    }
+  ],
+  "people": {
+    "Legolas": {
+      "age": 15
+    }
+  },
+  "bio": "Bella frate",
+  "favourite_pet": "Spot"
+}

@@ -1,0 +1,28 @@
+{
+  "type": "object",
+  "title": "Pets",
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [
+        "cat",
+        "dog",
+        "bird",
+        "reptile",
+        "other"
+      ],
+      "default": "dog"
+    },
+    "name": {
+      "type": "string"
+    },
+    "fixed": {
+      "type": "boolean",
+      "title": "spayed / neutered"
+    }
+  },
+  "options": {
+    "disable_properties": "true",
+    "collapsed": "true"
+  }
+}

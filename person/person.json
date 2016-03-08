@@ -1,0 +1,88 @@
+{
+  "$ref": "person/basic_person.json",
+  "properties": {
+    "location": {
+      "type": "object",
+      "title": "Location",
+      "propertyOrder": 22,
+      "properties": {
+        "city": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "citystate": {
+          "type": "string",
+          "description": "This is generated automatically from the previous two fields",
+          "template": "{{city}}, {{state}}",
+          "watch": {
+            "city": "person.location.city",
+            "state": "person.location.state"
+          }
+        },
+        "coglions": {
+          "type": "number",
+          "format": "range",
+          "minimum": 0,
+          "maximum": 100,
+          "multipleOf": 5,
+          "propertyOrder": 22
+        },
+        "cool": {
+          "type": "boolean",
+          "format": "checkbox"
+        }
+      }
+    },
+    "pets": {
+      "type": "array",
+      "format": "tabs",
+      "title": "Pets",
+      "uniqueItems": true,
+      "propertyOrder": 20,
+      "items": {
+        "headerTemplate": "{{i}} - {{self.name}} the {{self.type}}",
+        "$ref": "person/pets.json"
+      },
+      "options": {
+        "disable_array_reorder": true
+      }
+    },
+    "favourite_pet": {
+      "type": "string",
+      "title": "Favourite among the pets",
+      "propertyOrder": 21,
+      "watch": {
+        "lista": "person.pets"
+      },
+      "enumSource": [{
+        "source": "lista",
+        "value": "{{item.name}}"
+      }]
+    },
+    "people": {
+      "type": "object",
+      "id": "poeple",
+      "patternProperties": {
+        ".*": {
+          "type": "object",
+          "properties": {
+            "age": {"type": "integer"}
+          }
+        }
+      }
+    },
+    "favourite_people": {
+      "type": "string",
+      "title": "Favourite among the people",
+      "watch": {
+        "quali": "person"
+      },
+      "enumSource": [{
+        "source": "quali",
+        "value": "{{item.name}}"
+      }]
+    }
+  }
+}

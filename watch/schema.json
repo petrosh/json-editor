@@ -1,0 +1,120 @@
+{
+  "title": "Core",
+  "description": "Core values for RPGit",
+  "type": "object",
+  "definitions": {
+    "set": {
+      "type": "object",
+      "title": "Set",
+      "headerTemplate": "{{self.title}}",
+      "properties": {
+        "title": {
+          "type": "string",
+          "title": "Title"
+        },
+        "description": {
+          "type": "string",
+          "title": "description"
+        },
+        "children": {
+          "type": "array",
+          "title": "Gauge list",
+          "format": "tabs",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "headerTemplate": "{{self.title}}",
+            "$ref": "#/definitions/gaugelist"
+          },
+          "options": {
+            "disable_array_reorder": true,
+            "disable_array_delete": true
+          }
+        }
+      },
+      "required": [
+        "title",
+        "description",
+        "children"
+      ]
+    },
+    "gaugelist": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "title": "Select gauge",
+          "watch": {
+            "g": "Gauges"
+          },
+          "enumSource": [{
+            "source": "g",
+            "value": "{{item.title}}"
+          }]
+        }
+      }
+    },
+    "gauge": {
+      "type": "object",
+      "id": "gauge",
+      "title": "Gauge",
+      "headerTemplate": "{{self.title}}",
+      "properties": {
+        "title": {
+          "type": "string",
+          "title": "Title"
+        },
+        "description": {
+          "type": "string",
+          "title": "Description"
+        },
+        "full_name": {
+          "type": "string",
+          "template": "{{title}} {{description}}",
+          "watch": {
+            "title": "gauge.title",
+            "description": "gauge.description"
+          },
+          "options": {
+            "hidden": true
+          }
+        }
+      },
+      "required": [
+        "title",
+        "description"
+      ]
+    }
+  },
+  "properties": {
+    "Gauges": {
+      "type": "array",
+      "format": "tabs",
+      "id": "gauges",
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/definitions/gauge"
+      },
+      "options": {
+        "disable_array_reorder": true
+      }
+    },
+    "Sets": {
+      "type": "array",
+      "title": "Sets",
+      "format": "tabs",
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/definitions/set"
+      },
+      "options": {
+        "disable_array_reorder": true,
+        "disable_array_delete": true
+      }
+    }
+  },
+  "required": [
+    "Gauges",
+    "Sets"
+  ]
+}

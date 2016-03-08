@@ -1,0 +1,21 @@
+{
+  "array": "a",
+  "sequence": [
+    {
+      "attributes": [
+        {
+          "title": "Strength",
+          "value": "10 > 0"
+        }
+      ]
+    },
+    {
+      "attributes": [
+        {
+          "title": "Strength",
+          "value": "10 > 0"
+        }
+      ]
+    }
+  ]
+}

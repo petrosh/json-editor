@@ -1,0 +1,60 @@
+{
+  "system": {
+    "rolls": [
+      {
+        "title": "3d6",
+        "dices": 3,
+        "sides": [
+          { "symbol": "1", "value": 1 },
+          { "symbol": "2", "value": 2 },
+          { "symbol": "3", "value": 3 },
+          { "symbol": "4", "value": 4 },
+          { "symbol": "5", "value": 5 },
+          { "symbol": "6", "value": 6 }
+        ]
+      },
+      {
+        "title": "Fate",
+        "dices": 1,
+        "sides": [
+          { "symbol": "+1", "value": 1 },
+          { "symbol": "0", "value": 0 },
+          { "symbol": "-1", "value": -1 }
+        ]
+      }
+    ],
+    "units": [
+
+      {
+        "quantity": "length",
+        "title": "Metre",
+        "formula": 1
+      },
+      {
+        "quantity": "weight",
+        "title": "Pound",
+        "formula": 0.453592
+      },
+      {
+        "quantity": "temperature",
+        "title":  "Fahrenheit",
+        "formula": "( * (9/5)) - 459.67"
+      },
+      {
+        "quantity": "time",
+        "title": "Nanocentury",
+        "formula": 3.15
+      }
+
+    ]
+  },
+  "character": {
+    "gauges": [
+      {
+        "type": "gauge",
+        "title": "Strength",
+        "description": "Physical strength"
+      }
+    ]
+  }
+}
