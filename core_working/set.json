@@ -1,0 +1,35 @@
+{
+  "type": "object",
+  "title": "Set",
+  "headerTemplate": "{{self.title}}",
+  "properties": {
+    "title": {
+      "type": "string",
+      "title": "Title",
+      "minLength": 1
+    },
+    "description": {
+      "type": "string",
+      "title": "Description"
+    },
+    "children": {
+      "type": "array",
+      "title": "Gauge list",
+      "format": "tabs",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "schema/gauge_list.json"
+      },
+      "options": {
+        "disable_array_reorder": true,
+        "disable_array_delete": true
+      }
+    }
+  },
+  "required": [
+    "title",
+    "description",
+    "children"
+  ]
+}

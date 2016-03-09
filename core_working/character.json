@@ -10,7 +10,7 @@
       "format": "tabs",
       "uniqueItems": true,
       "items": {
-        "$ref": "schema/gauge.json"
+        "$ref": "core_working/gauge.json"
       },
       "options": {
         "disable_array_reorder": true
@@ -23,7 +23,7 @@
       "format": "tabs",
       "uniqueItems": true,
       "items": {
-        "$ref": "schema/set.json"
+        "$ref": "core_working/set.json"
       },
       "options": {
         "disable_array_reorder": true,

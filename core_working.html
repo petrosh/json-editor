@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>Advanced JSON Editor Example</title>
+    <title>json-editor Schema</title>
     <link rel="stylesheet" href="css/style.css" media="screen" title="main" charset="utf-8">
     <script src="js/jsoneditor.js"></script>
   </head>
@@ -17,7 +17,8 @@
       <li>Macro templates (try changing the city or state fields and watch the citystate field update automatically)</li>
       <li>Enabling and disabling editor fields</li>
       <li><a href="index1.html">old version</a></li>
-      <li><a href="core_working.html">schema</a></li>
+      <li><a href="index.html">Home</a></li>
+      <li>This is <a href="core_working/">core_working/</a></li>
     </ul>
 
     <button id='submit'>Submit (console.log)</button>
@@ -29,7 +30,7 @@
 
     <script>
 
-    var starting_schema, starting_value, root="schema/";
+    var starting_schema, starting_value, root="core_working/";
 
     // url (required), options (optional)
       var myRequest = new Request(root+'default.json');

@@ -1,0 +1,17 @@
+{
+  "type": "object",
+  "headerTemplate": "{{self.title}}",
+  "properties": {
+    "title": {
+      "type": "string",
+      "title": "Select gauge",
+      "watch": {
+        "g": "character.gauges"
+      },
+      "enumSource": [{
+        "source": "g",
+        "value": "{{item.title}}"
+      }]
+    }
+  }
+}

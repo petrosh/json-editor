@@ -1,0 +1,33 @@
+{
+  "type": "object",
+  "title": "System",
+  "properties": {
+    "units": {
+      "type": "array",
+      "title": "Units",
+      "format": "tabs",
+      "description": "Units of measurement",
+      "uniqueItems": true,
+      "items": {
+        "$ref": "schema/unit.json"
+      },
+      "options": {
+        "disable_array_reorder": true
+      }
+    },
+    "rolls": {
+      "type": "array",
+      "title": "Rolls",
+      "description": "Base dice rolls",
+      "format": "tabs",
+      "uniqueItems": true,
+      "items": {
+        "$ref": "schema/roll.json"
+      }
+    }
+  },
+  "required": [
+    "units",
+    "rolls"
+  ]
+}
