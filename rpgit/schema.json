@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/schema#",
-  "id": "https://github.com/Fork-n-Play/rpgit/blob/master/schema/settings_schema.json",
+  "id": "https://github.com/petrosh/json-editor/blob/gh-pages/rpgit/schema.json",
   "title": "Settings",
   "description": "Json settings for RPGit",
   "type": "object",

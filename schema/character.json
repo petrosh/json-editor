@@ -1,15 +1,16 @@
 {
   "type": "object",
-  "title": "Core",
-  "description": "Core values for RPGit",
+  "title": "Character",
+  "description": "Procedural components of the entity called character",
   "properties": {
     "gauges": {
       "type": "array",
       "title": "Gauges",
+      "description": "Graduated values associated with a name",
       "format": "tabs",
       "uniqueItems": true,
       "items": {
-        "$ref": "watch/gauge.json"
+        "$ref": "schema/gauge.json"
       },
       "options": {
         "disable_array_reorder": true
@@ -18,10 +19,11 @@
     "sets": {
       "type": "array",
       "title": "Sets",
+      "description": "Collections of gauges as a single node",
       "format": "tabs",
       "uniqueItems": true,
       "items": {
-        "$ref": "watch/set.json"
+        "$ref": "schema/set.json"
       },
       "options": {
         "disable_array_reorder": true,

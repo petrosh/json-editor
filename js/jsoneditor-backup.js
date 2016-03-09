@@ -6316,9 +6316,10 @@ JSONEditor.AbstractTheme = Class.extend({
   getTabContent: function() {
     return this.getIndentedPanel();
   },
-  markTabActive: function(tab) { // edit was opacity: 1,  background: 'white'
+  markTabActive: function(tab) {
     this.applyStyles(tab,{
-      color: 'blue'
+      opacity: 1,
+      background: 'white'
     });
   },
   markTabInactive: function(tab) {

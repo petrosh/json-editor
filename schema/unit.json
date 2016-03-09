@@ -1,0 +1,54 @@
+{
+  "type": "object",
+  "id": "unit",
+  "title": "Physical quantity",
+  "headerTemplate": "{{self.title}}",
+  "properties": {
+    "title": {
+      "type": "string",
+      "title": "Title",
+      "minLength": 1
+    },
+    "description": {
+      "type": "string",
+      "title": "Description"
+    },
+    "quantity": {
+      "type": "string",
+      "title": "Quantity",
+      "enum": [
+        "length",
+        "weight",
+        "temperature",
+        "time"
+      ],
+      "required": [
+        "length",
+        "weight",
+        "temperature",
+        "time"
+      ]
+    },
+    "formula": {
+      "type": "array",
+      "title": "Operations list",
+      "format": "tabs",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "headerTemplate": "{{self.operand}} {{self.value}}",
+        "$ref": "schema/operation.json"
+      },
+      "options": {
+        "disable_array_reorder": true,
+        "disable_array_delete": true
+      }
+    }
+  },
+  "required": [
+    "title",
+    "description",
+    "quantity",
+    "formula"
+  ]
+}
