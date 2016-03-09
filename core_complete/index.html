@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>json-editor core_complete</title>
+    <link rel="stylesheet" href="../css/style.css" media="screen" title="main" charset="utf-8">
+    <script src="../js/jsoneditor.js"></script>
+  </head>
+  <body>
+    <h1>Advanced JSON Editor Example</h1>
+    <h2>core_complete</h2>
+    <p>This example demonstrates the following:</p>
+    <ul>
+      <li>Loading external schemas via ajax (using $ref)</li>
+      <li>Setting the editor's value from javascript (try the Restore to Default button)</li>
+      <li>Validating the editor's contents (try setting name to an empty string)</li>
+      <li>Macro templates (try changing the city or state fields and watch the citystate field update automatically)</li>
+      <li>Enabling and disabling editor fields</li>
+      <li><a href="../index.html">Home</a></li>
+      <li>This is <a href="/">core_complete/</a></li>
+    </ul>
+
+    <button id='submit'>Submit (console.log)</button>
+    <button id='restore'>Restore to Default</button>
+    <button id='enable_disable'>Disable/Enable Form</button>
+    <span id='valid_indicator'></span>
+
+    <div id='editor_holder'></div>
+
+    <script>
+
+    var starting_schema, starting_value, root="";
+
+    // url (required), options (optional)
+      var myRequest = new Request(root+'default.json');
+      fetch(myRequest).then(function(response) {
+        return response.json().then(function(json) {
+          // This is the starting value for the editor
+          // We will use this to seed the initial editor
+          // and to provide a "Restore to Default" button.
+          starting_value = json;
+          // console.log(starting_value);
+          schema();
+        });
+      });
+
+      function schema(){
+        var myRequest = new Request(root+'schema.json');
+        fetch(myRequest).then(function(response) {
+          return response.json().then(function(json) {
+            // This is the starting value for the editor
+            // We will use this to seed the initial editor
+            // and to provide a "Restore to Default" button.
+            starting_schema = json;
+            // console.log(starting_schema);
+            go(json);
+          });
+        });
+      }
+
+      function go(json){
+
+        // Initialize the editor
+        var editor = new JSONEditor(document.getElementById('editor_holder'),{
+          // Enable fetching schemas via ajax
+          ajax: true,
+
+          // The schema for the editor
+          schema: json,
+
+          // Seed the form with a starting value
+          startval: starting_value,
+
+          // Disable additional properties
+          // false if you need additional properties
+          no_additional_properties: false,
+
+          // Require all properties by default
+          required_by_default: false,
+
+          // ADDED
+          disable_properties: true,
+          disable_edit_json: true,
+          disable_array_reorder: false
+        });
+
+        // Hook up the submit button to log to the console
+        document.getElementById('submit').addEventListener('click',function() {
+          // Get the value from the editor
+          console.log(editor.getValue());
+        });
+
+        // Hook up the Restore to Default button
+        document.getElementById('restore').addEventListener('click',function() {
+          editor.setValue(starting_value);
+        });
+
+        // Hook up the enable/disable button
+        document.getElementById('enable_disable').addEventListener('click',function() {
+          // Enable form
+          if(!editor.isEnabled()) {
+            editor.enable();
+          }
+          // Disable form
+          else {
+            editor.disable();
+          }
+        });
+
+        // editor.watch('root.character.gauges', function() {
+        //   var gauges = editor.getEditor('root.character.gauges').getValue();
+        //   var arr = [];
+        //   for (var i = 0; i < gauges.length; i++) {
+        //     arr.push(gauges[i].title);
+        //   }
+        //   arr.unshift("");
+        //   editor.getEditor('root.character.gauge_list').setValue( arr );
+        //   // console.log(gauges);
+        // });
+        //
+        // editor.watch('root.character.gauges.0.generation', function() {
+        //   var generation = editor.getEditor('root.character.gauges.0.generation').getValue();
+        //   // var arr = [];
+        //   // for (var i = 0; i < gauges.length; i++) {
+        //   //   arr.push(gauges[i].title);
+        //   // }
+        //   if(generation=='roll'){
+        //     editor.getEditor('root.character.gauges.0.depend').disable();
+        //   }
+        //   if(generation=='formula'){
+        //     editor.getEditor('root.character.gauges.0.depend').enable();
+        //   }
+        //   console.log(generation);
+        // });
+
+        // Hook up the validation indicator to update its
+        // status whenever the editor changes
+        editor.on('change',function() {
+          // Get an array of errors from the validator
+          var errors = editor.validate();
+
+          var indicator = document.getElementById('valid_indicator');
+
+          // Not valid
+          if(errors.length) {
+            console.log(errors);
+            indicator.style.color = 'red';
+            indicator.textContent = "not valid";
+          }
+          // Valid
+          else {
+            indicator.style.color = 'green';
+            indicator.textContent = "valid";
+          }
+        });
+      }
+    </script>
+  </body>
+</html>

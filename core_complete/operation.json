@@ -1,0 +1,35 @@
+{
+  "type": "object",
+  "title": "Operation",
+  "description": "Operations applied to SI base units: m, kg, s, A, K, mol, cd",
+  "properties": {
+    "operand": {
+      "type": "string",
+      "title": "Operand",
+      "enum": [
+        "+",
+        "-",
+        "*",
+        "/",
+        "^"
+      ],
+      "options": {
+        "enum_titles": [
+          "Sum",
+          "Subtract",
+          "Multiply",
+          "Divide",
+          "Power"
+        ]
+      }
+    },
+    "value": {
+      "type": "number",
+      "title": "Value"
+    }
+  },
+  "required": [
+    "operand",
+    "value"
+  ]
+}

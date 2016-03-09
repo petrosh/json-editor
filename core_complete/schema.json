@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/schema#",
-  "id": "https://raw.githubusercontent.com/petrosh/json-editor/gh-pages/core_working/schema.json",
+  "id": "https://raw.githubusercontent.com/petrosh/json-editor/gh-pages/core_complete/schema.json",
   "type": "object",
   "title": "Core",
   "description": "Core values for RPGit",
