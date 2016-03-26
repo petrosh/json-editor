@@ -88,5 +88,13 @@
         "description": "Agility and physical coordination"
       }
     ]
+  },
+  "world": {
+    "gauges": [
+      {
+        "title": "Position",
+        "description": "World position"
+      }
+    ]
   }
 }

@@ -13,7 +13,8 @@
         "$ref": "gauge.json"
       },
       "options": {
-        "disable_array_reorder": true
+        "disable_array_reorder": true,
+        "collapsed": true
       }
     },
     "sets": {

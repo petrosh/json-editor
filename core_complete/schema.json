@@ -10,10 +10,14 @@
     },
     "character": {
       "$ref": "character.json"
+    },
+    "world": {
+      "$ref": "world.json"
     }
   },
   "required": [
     "system",
-    "character"
+    "character",
+    "world"
   ]
 }

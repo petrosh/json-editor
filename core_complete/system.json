@@ -12,7 +12,8 @@
         "$ref": "unit.json"
       },
       "options": {
-        "disable_array_reorder": true
+        "disable_array_reorder": true,
+        "collapsed": true
       }
     },
     "rolls": {
@@ -23,6 +24,9 @@
       "uniqueItems": true,
       "items": {
         "$ref": "roll.json"
+      },
+      "options": {
+        "collapsed": true
       }
     }
   },
