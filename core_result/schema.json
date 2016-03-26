@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "id": "https://raw.githubusercontent.com/petrosh/json-editor/gh-pages/core_complete/schema.json",
+  "type": "object",
+  "title": "Core",
+  "description": "Core values for RPGit",
+  "properties": {
+    "system": {
+      "$ref": "system.json"
+    },
+    "character": {
+      "$ref": "character.json"
+    },
+    "world": {
+      "$ref": "world.json"
+    }
+  },
+  "required": [
+    "system",
+    "character",
+    "world"
+  ]
+}

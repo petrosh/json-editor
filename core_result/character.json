@@ -1,0 +1,39 @@
+{
+  "type": "object",
+  "title": "Character",
+  "description": "Procedural components of the entity called character",
+  "properties": {
+    "gauges": {
+      "type": "array",
+      "title": "Gauges",
+      "description": "Graduated value associated with a name",
+      "format": "tabs",
+      "uniqueItems": true,
+      "items": {
+        "$ref": "gauge.json"
+      },
+      "options": {
+        "disable_array_reorder": true,
+        "collapsed": true
+      }
+    },
+    "sets": {
+      "type": "array",
+      "title": "Sets",
+      "description": "Collections of gauges as a single node",
+      "format": "tabs",
+      "uniqueItems": true,
+      "items": {
+        "$ref": "set.json"
+      },
+      "options": {
+        "disable_array_reorder": true,
+        "disable_array_delete": true
+      }
+    }
+  },
+  "required": [
+    "gauges",
+    "sets"
+  ]
+}

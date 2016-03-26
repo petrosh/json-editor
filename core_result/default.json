@@ -1,0 +1,100 @@
+{
+  "system": {
+    "rolls": [
+      {
+        "title": "3d6",
+        "dices": 3,
+        "sides": [
+          { "symbol": "1", "value": 1 },
+          { "symbol": "2", "value": 2 },
+          { "symbol": "3", "value": 3 },
+          { "symbol": "4", "value": 4 },
+          { "symbol": "5", "value": 5 },
+          { "symbol": "6", "value": 6 }
+        ]
+      },
+      {
+        "title": "Fate",
+        "dices": 1,
+        "sides": [
+          { "symbol": "+1", "value": 1 },
+          { "symbol": "0", "value": 0 },
+          { "symbol": "-1", "value": -1 }
+        ]
+      }
+    ],
+    "units": [
+
+      {
+        "quantity": "length",
+        "title": "Metre",
+        "formula": [
+          {
+            "operand": "/",
+            "value": 1
+          }
+        ]
+      },
+      {
+        "quantity": "weight",
+        "title": "Pound",
+        "formula": [
+          {
+            "operand": "/",
+            "value": 0.453592
+          }
+        ]
+      },
+      {
+        "quantity": "temperature",
+        "title":  "Fahrenheit",
+        "formula": [
+          {
+            "operand": "*",
+            "value": 9
+          },
+          {
+            "operand": "/",
+            "value": 5
+          },
+          {
+            "operand": "-",
+            "value": 459.67
+          }
+        ]
+      },
+      {
+        "quantity": "time",
+        "title": "Nanocentury",
+        "description": "https://en.wikipedia.org/wiki/List_of_humorous_units_of_measurement#Nanocentury",
+        "formula": [
+          {
+            "operand": "/",
+            "value": 3.155
+          }
+        ]
+      }
+
+    ]
+  },
+  "character": {
+    "gauges": [
+      {
+        "title": "Strength",
+        "description": "Physical strength and force you may apply"
+      },
+      {
+        "title": "Dexterity",
+        "description": "Agility and physical coordination"
+      }
+    ]
+  },
+  "world": {
+    "gauges": [
+      {
+        "title": "Position",
+        "description": "World position"
+      }
+    ]
+  }
+}

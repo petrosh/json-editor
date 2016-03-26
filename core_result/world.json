@@ -1,0 +1,23 @@
+{
+  "type": "object",
+  "title": "World",
+  "description": "Procedural components of the entity called world",
+  "properties": {
+    "gauges": {
+      "type": "array",
+      "title": "Gauges",
+      "description": "Graduated value associated with a name",
+      "format": "tabs",
+      "uniqueItems": true,
+      "items": {
+        "$ref": "gauge.json"
+      },
+      "options": {
+        "disable_array_reorder": true
+      }
+    }
+  },
+  "required": [
+    "gauges"
+  ]
+}
