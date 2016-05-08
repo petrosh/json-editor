@@ -1,0 +1,37 @@
+{
+  "type": "object",
+  "title": "Weapon",
+  "description": "Weapons for ships",
+  "headerTemplate": "{{self.name}}",
+  "properties": {
+    "name": {
+      "type": "string",
+      "title": "Name",
+      "description": "Name of the weapon"
+    },
+    "ships": {
+      "type": "array",
+      "format": "tabs",
+      "title": "Ships",
+      "description": "Ships allowed to mount the weapon",
+      "uniqueItems": true,
+      "items": {
+        "$ref": "ship.json"
+      },
+      "options": {
+        "disable_array_reorder": true,
+        "collapsed": true
+      }
+    },
+    "range": {
+      "type": "number",
+      "title": "Range",
+      "description": "Range of the weapon in parsecs"
+    }
+  },
+  "required": [
+    "name",
+    "ships",
+    "range"
+  ]
+}

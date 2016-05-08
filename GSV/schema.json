@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "id": "https://raw.githubusercontent.com/petrosh/json-editor/gh-pages/GSV/schema.json",
+  "type": "object",
+  "title": "GSV",
+  "description": "General Systems Vehicle",
+  "properties": {
+    "ship": {
+      "$ref": "ship.json"
+    },
+    "weapon": {
+      "$ref": "weapon.json"
+    }
+  },
+  "required": [
+    "ship",
+    "weapon"
+  ]
+}

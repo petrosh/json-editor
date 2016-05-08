@@ -1,0 +1,45 @@
+{
+  "league": {
+    "name": "ciao",
+    "slug": "ciao",
+    "running": false,
+    "standings": [
+      {
+        "name": "THE JULIENS IV",
+        "username": "giampiex",
+        "matches": 6,
+        "win": 4,
+        "tie": 0,
+        "lost": 2
+      }
+    ],
+    "rounds": [
+      {
+        "date": "1462638384600",
+        "matches": [
+          {
+            "venue": {
+              "stadium": "Venlokod Palace",
+              "attendance": 321,
+              "weather": "slick"
+            },
+            "home": {
+              "name": "THE JULIENS IV",
+              "username": "giampiex",
+              "score": 13
+            },
+            "away": {
+              "name": "Bonifazi's",
+              "username": "petrosh",
+              "score": 4
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "team": {
+    "name": "THE JULIENS IV",
+    "username": "giampiex"
+  }
+}

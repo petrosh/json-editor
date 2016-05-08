@@ -1,0 +1,37 @@
+{
+  "type": "object",
+  "title": "Ship",
+  "description": "Ship attributes",
+  "headerTemplate": "{{self.type}}",
+  "properties": {
+    "type": {
+      "type": "string",
+      "title": "Type",
+      "description": "Ship type"
+    },
+    "class": {
+      "type": "string",
+      "title": "Class",
+      "description": "Class of the ship"
+    },
+    "weapons": {
+      "type": "array",
+      "title": "Weapons",
+      "description": "Weapons on the ship",
+      "format": "tabs",
+      "uniqueItems": true,
+      "items": {
+        "$ref": "weapon.json"
+      },
+      "options": {
+        "disable_array_reorder": true,
+        "collapsed": true
+      }
+    }
+  },
+  "required": [
+    "type",
+    "class",
+    "weapons"
+  ]
+}
